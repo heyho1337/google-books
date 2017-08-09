@@ -1,0 +1,34 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<section  class="book_cont">
+	<div class="book_cont">
+		<div class="show_cart" (click)="show_cart()"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+		<div class="search_wrapp" id="search_wrapp">
+			<div class="search_cont">
+				<h1>
+					{{title}}!
+				</h1>
+				<input type="text" [(ngModel)]="queryString" id="search" placeholder="Search to type">
+			</div>
+		</div>
+		<div id="books" class='{{active_list}}'>
+			<ul *ngFor="let title of titles | FilterPipe: queryString">
+				<li *ngFor="let link of title" (click)="open(link)">
+					<i class="fa fa-book" aria-hidden="true"></i>{{link.title}}
+				</li>
+			</ul>
+		</div>
+		<div class="book">
+			<div id="close" (click)="close()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></div>
+			<h2 id="title"></h2>
+			<h3 id="authors"></h3>
+			<img id="thumb"/>
+			<div id="desc"></div>
+			<input type="hidden" id="id" value=""/>
+			<div (click)="cart()" id="cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></div>
+		</div>
+		<div id="cart_list">
+			<div id="close_cart" (click)="close_cart()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></div>
+			<div [innerHtml]=cart_list></div>
+		</div>
+	</div>
+</section>
